@@ -15,6 +15,21 @@ document.getElementById('add').addEventListener('click', function(){
 
 });
 
+function removeItem(){
+    let item = this.parentNode.parentNode;
+    let list = item.parentNode;
+    list.removeChild(item);
+}
+
+function completeItem(){
+    let item = this.parentNode.parentNode;
+    let list = item.parentNode;
+    let list_completed = document.getElementById('completed');
+    
+    list.removeChild(item);
+    list_completed.insertBefore(item, list_completed.childNodes[0]);
+}
+
 //agregar itemd a la lista
 function addItemTodo(text) {
     let list = document.getElementById('todo');
@@ -28,10 +43,13 @@ function addItemTodo(text) {
     let remove_btn = document.createElement('button');
     remove_btn.classList.add('remove');
     remove_btn.innerHTML = removeSVG;
+    remove_btn.addEventListener('click', removeItem);
+
 
     let complete_btn = document.createElement('button');
     complete_btn.classList.add('complete');
     complete_btn.innerHTML =  completeSVG;
+    complete_btn.addEventListener('click', completeItem);
 
     buttons.appendChild(remove_btn);
     buttons.appendChild(complete_btn);
