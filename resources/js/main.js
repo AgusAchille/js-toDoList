@@ -24,10 +24,11 @@ function removeItem(){
 function completeItem(){
     let item = this.parentNode.parentNode;
     let list = item.parentNode;
-    let list_completed = document.getElementById('completed');
+    
+    let list_target = document.getElementById( list.id=='todo' ? 'completed' : 'todo' );
     
     list.removeChild(item);
-    list_completed.insertBefore(item, list_completed.childNodes[0]);
+    list_target.insertBefore(item, list_target.childNodes[0]);
 }
 
 //agregar itemd a la lista
